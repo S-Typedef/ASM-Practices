@@ -1,0 +1,16 @@
+; .586
+DATA SEGMENT; use16
+        MESG DB 'hello world','$'
+DATA ENDS
+CODE SEGMENT; USE16B
+    ASSUME CS:CODE,DS:DATA
+BEG:    MOV AX,DATA
+        MOV DS, AX
+LAST:   MOV AH,9
+        MOV DX, OFFSET MESG
+        INT 21H
+        MOV AH,4CH
+        INT 21H;BACK TO DOS
+
+CODE ENDS
+END  BEG
